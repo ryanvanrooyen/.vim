@@ -1,8 +1,6 @@
 
 " Define all plugins
 call plug#begin('~/.vim/plugins')
-"Plug 'tomasiser/vim-code-dark'
-"Plug 'ryanvanrooyen/Themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
 call plug#end()
