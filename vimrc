@@ -59,7 +59,8 @@ set softtabstop=4
 set shiftwidth=4
 
 " Set custom ctrlP settings
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git\|Documents/pynalyzer/stc\|Documents/pynalyzer/local\|Documents/pynalyzer/salesforce\|Documents/pynalyzer/local/coverage\|Documents/pynalyzer/deploy'
+let g:ctrlp_custom_ignore='node_modules\|DS_Store\|.git\|Documents/pynalyzer/stc\|Documents/pynalyzer/local\|Documents/pynalyzer/salesforce\|Documents/pynalyzer/local/coverage\|Documents/pynalyzer/deploy'
+let g:ctrlp_cache_dir='~/.vim/.ctrlpcache'
 
 "let g:ctrlp_buffer_func = {
     "\ 'enter': 'Function_Name_1',
