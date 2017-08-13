@@ -10,9 +10,13 @@ set mouse=a
 " Disable auto adding comment characters
 au FileType * set fo-=c fo-=r fo-=o
 
-if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+" Set vertical bar in insert mode and block in normal mode.
+if $TMUX =~ ","
+    let &t_SI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=1\x7\<esc>\\"
+    let &t_EI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=0\x7\<esc>\\"
+elseif $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" 
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 " Remap Ctrl + j/k keys to move lines up/down
