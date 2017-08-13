@@ -7,6 +7,8 @@ call plug#end()
 
 " Enable mouse support
 set mouse=a
+" Disable auto adding comment characters
+au FileType * set fo-=c fo-=r fo-=o
 
 if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
@@ -74,4 +76,5 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:15,results:15'
 "func! Function_Name_2()
     "set laststatus=2
 "endfunc
+
 
