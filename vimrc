@@ -3,12 +3,17 @@
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'bling/vim-airline'
 call plug#end()
 
 " Enable mouse support
 set mouse=a
 " Disable auto adding comment characters
 au FileType * set fo-=c fo-=r fo-=o
+
+" Fixes occasional issues with backspace key
+set backspace=indent,eol,start
 
 " Set vertical bar in insert mode and block in normal mode.
 if $TMUX =~ ","
@@ -63,6 +68,9 @@ set hlsearch
 set wrapscan 
 set softtabstop=4
 set shiftwidth=4
+
+" Set custom NerdCommenter settings
+let g:NERDSpaceDelims = 1
 
 " Set custom ctrlP settings
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|.git\|Documents/pynalyzer/stc\|Documents/pynalyzer/local\|Documents/pynalyzer/salesforce\|Documents/pynalyzer/local/coverage\|Documents/pynalyzer/deploy'
