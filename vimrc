@@ -3,8 +3,7 @@
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'bling/vim-airline'
+Plug 'bling/vim-airline'
 call plug#end()
 
 " Enable mouse support
@@ -20,7 +19,7 @@ if $TMUX =~ ","
     let &t_SI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=1\x7\<esc>\\"
     let &t_EI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=0\x7\<esc>\\"
 elseif $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" 
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
@@ -54,23 +53,32 @@ nnoremap <CR> o<ESC>
 
 
 " Specify theme stylings.
-"set guitablabel=\[%N\]\ %t\ %M 
-"autocmd BufEnter * let &titlestring = ' ' . expand("%:t")             
+"set guitablabel=\[%N\]\ %t\ %M
+"autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 "let g:netrw_banner=0
 set title
+" colorscheme vsdark
 colorscheme vsdark
+let g:airline_theme = 'vsdark'
 syntax on
 set number
 set numberwidth=5
 set showcmd
 set incsearch
 set hlsearch
-set wrapscan 
+set wrapscan
 set softtabstop=4
 set shiftwidth=4
 
+
+" VimDiff Settings
+set diffopt+=iwhite
+set diffexpr=""
+
+
 " Set custom NerdCommenter settings
 let g:NERDSpaceDelims = 1
+
 
 " Set custom ctrlP settings
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|.git\|Documents/pynalyzer/stc\|Documents/pynalyzer/local\|Documents/pynalyzer/salesforce\|Documents/pynalyzer/local/coverage\|Documents/pynalyzer/deploy'
@@ -84,9 +92,9 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:15,results:15'
 
 "func! Function_Name_1()
     "set laststatus=0
+
 "endfunc
 "func! Function_Name_2()
     "set laststatus=2
 "endfunc
-
 

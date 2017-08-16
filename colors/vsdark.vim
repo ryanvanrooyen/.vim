@@ -1,14 +1,14 @@
-" VS Dark (color scheme)
+
 scriptencoding utf-8
 
-set background=dark
 hi clear
 if exists("syntax_on")
     syntax reset
 endif
 let g:colors_name="vsdark"
 
-" Highlighting function
+
+" Highlighting function (inspiration from https://github.com/chriskempson/base16-vim)
 if &t_Co >= 256
     let g:vsdark_term256=1
 elseif !exists("g:vsdark_term256")
@@ -29,7 +29,7 @@ fun! <sid>hi(group, fg, bg, attr, sp)
   endif
 endfun
 
-" Color definitions:
+
 " Terminal colors (base16):
 let s:cterm00 = "00"
 let s:cterm03 = "08"
@@ -57,7 +57,8 @@ else
   let s:cterm0F = "03"
 endif
 
-" General appearance colors:
+
+" General appearance colors (some of them may be unused):
 let s:cdNone = {'gui': 'NONE', 'cterm': 'NONE', 'cterm256': 'NONE'}
 let s:cdFront = {'gui': '#D4D4D4', 'cterm': s:cterm05, 'cterm256': '188'}
 let s:cdBack = {'gui': 'NONE', 'cterm': 'NONE', 'cterm256': 'NONE'}
@@ -94,6 +95,7 @@ let s:cdDiffGreenLight = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'
 let s:cdSearchCurrent = {'gui': '#49545F', 'cterm': s:cterm09, 'cterm256': '239'}
 let s:cdSearch = {'gui': '#4C4E50', 'cterm': s:cterm0A, 'cterm256': '239'}
 
+
 " Syntax colors:
 if !exists("g:vsdark_conservative")
     let g:vsdark_conservative=0
@@ -117,6 +119,7 @@ if g:vsdark_conservative | let s:cdYellow = s:cdFront | endif
 let s:cdPink = {'gui': '#C586C0', 'cterm': s:cterm0E, 'cterm256': '176'}
 if g:vsdark_conservative | let s:cdPink = s:cdBlue | endif
 
+
 " Vim editor colors
 "    <sid>hi(GROUP, FOREGROUND, BACKGROUND, ATTRIBUTE, SPECIAL)
 call <sid>hi('Normal', s:cdFront, s:cdBack, 'none', {})
@@ -137,7 +140,7 @@ call <sid>hi('SignColumn', {}, s:cdBack, 'none', {})
 call <sid>hi('IncSearch', s:cdNone, s:cdSearchCurrent, 'none', {})
 call <sid>hi('LineNr', s:cdLineNumber, s:cdBack, 'none', {})
 call <sid>hi('CursorLineNr', s:cdPopupFront, s:cdBack, 'none', {})
-call <sid>hi('MatchParen', s:cdNone, s:cdNone, 'inverse', {})
+call <sid>hi('MatchParen', s:cdNone, s:cdCursorDark, 'none', {})
 call <sid>hi('ModeMsg', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('MoreMsg', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('NonText', s:cdLineNumber, s:cdBack, 'none', {})
@@ -148,7 +151,9 @@ call <sid>hi('PmenuThumb', {}, s:cdPopupFront, 'none', {})
 call <sid>hi('Question', s:cdBlue, s:cdBack, 'none', {})
 call <sid>hi('Search', s:cdNone, s:cdSearch, 'none', {})
 call <sid>hi('SpecialKey', s:cdBlue, s:cdNone, 'none', {})
-"call <sid>hi('Spell***', s:cdNone, s:cdSearch, 'none', {})
+call <sid>hi('SpellBad', s:cdNone, s:cdNone, 'underline', {})
+call <sid>hi('SpellCap', s:cdNone, s:cdNone, 'underline', {})
+call <sid>hi('SpellLocal', s:cdNone, s:cdNone, 'underline', {})
 call <sid>hi('StatusLine', s:cdFront, s:cdLeftMid, 'none', {})
 call <sid>hi('StatusLineNC', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('TabLine', s:cdFront, s:cdTabOther, 'none', {})
@@ -178,6 +183,7 @@ call <sid>hi('Repeat', s:cdPink, {}, 'none', {})
 call <sid>hi('Label', s:cdPink, {}, 'none', {})
 call <sid>hi('Operator', s:cdFront, {}, 'none', {})
 call <sid>hi('Keyword', s:cdPink, {}, 'none', {})
+call <sid>hi('pythonOperator', s:cdPink, {}, 'none', {})
 call <sid>hi('Exception', s:cdPink, {}, 'none', {})
 
 call <sid>hi('PreProc', s:cdPink, {}, 'none', {})
@@ -195,10 +201,11 @@ call <sid>hi('Special', s:cdFront, {}, 'none', {})
 call <sid>hi('SpecialChar', s:cdFront, {}, 'none', {})
 call <sid>hi('Tag', s:cdFront, {}, 'none', {})
 call <sid>hi('Delimiter', s:cdFront, {}, 'none', {})
-call <sid>hi('SpecialComment', s:cdFront, {}, 'none', {})
+call <sid>hi('SpecialComment', s:cdGreen, {}, 'none', {})
 call <sid>hi('Debug', s:cdFront, {}, 'none', {})
 
 call <sid>hi('Underlined', s:cdNone, {}, 'underline', {})
+call <sid>hi("Conceal", s:cdFront, s:cdBack, 'none', {})
 
 call <sid>hi('Ignore', s:cdFront, {}, 'none', {})
 
