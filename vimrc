@@ -3,7 +3,6 @@
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
-Plug 'bling/vim-airline'
 call plug#end()
 
 " Enable mouse support
@@ -53,7 +52,7 @@ nnoremap <CR> o<ESC>
 
 
 " Specify theme stylings.
-"set guitablabel=\[%N\]\ %t\ %M
+    "set guitablabel=\[%N\]\ %t\ %M
 "autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 "let g:netrw_banner=0
 set title
@@ -63,38 +62,42 @@ let g:airline_theme = 'vsdark'
 syntax on
 set number
 set numberwidth=5
-set showcmd
+set noshowcmd
+set noshowmode
+set noruler
 set incsearch
 set hlsearch
 set wrapscan
 set softtabstop=4
 set shiftwidth=4
 
-
 " VimDiff Settings
 set diffopt+=iwhite
 set diffexpr=""
 
+" Color Codes: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+hi statusline ctermbg=32 ctermfg=white 
+
+" Customize Status Line
+set laststatus=2
+set statusline=\ %f      " Path to the file
+set statusline+=\        " Space
+set statusline+=%h%m%r%w " Flags
+set statusline+=%=       " Left/right separator
+set statusline+=%l/%L    " Cursor line/total lines
+set statusline+=\        " Space
+set statusline+=\        " Space
+set statusline+=%y       " Filetype
+set statusline+=\        " Space
+set statusline+=\        " Space
+
 
 " Set custom NerdCommenter settings
 let g:NERDSpaceDelims = 1
-
 
 " Set custom ctrlP settings
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|.git\|Documents/pynalyzer/stc\|Documents/pynalyzer/local\|Documents/pynalyzer/salesforce\|Documents/pynalyzer/local/coverage\|Documents/pynalyzer/deploy'
 let g:ctrlp_cache_dir='~/.vim/.ctrlpcache'
 let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:15,results:15'
 "let g:ctrlp_match_window = 'top,order:ttb,min:2,max:15,results:15'
-"let g:ctrlp_buffer_func = {
-    "\ 'enter': 'Function_Name_1',
-    "\ 'exit':  'Function_Name_2',
-    "\ }
-
-"func! Function_Name_1()
-    "set laststatus=0
-
-"endfunc
-"func! Function_Name_2()
-    "set laststatus=2
-"endfunc
 
