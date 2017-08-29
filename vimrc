@@ -22,6 +22,7 @@ elseif $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+
 " Remap Ctrl + j/k keys to move lines up/down
 nnoremap <C-j> <Esc>:m+<Enter>==
 nnoremap <C-k> :m .-2<CR>==
@@ -71,6 +72,13 @@ set wrapscan
 set softtabstop=4
 set shiftwidth=4
 
+" Highlight the current line in the current window
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
+
 " VimDiff Settings
 set diffopt+=iwhite
 set diffexpr=""
@@ -81,14 +89,12 @@ hi statusline ctermbg=32 ctermfg=white
 " Customize Status Line
 set laststatus=2
 set statusline=\ %f      " Path to the file
-set statusline+=\        " Space
 set statusline+=%h%m%r%w " Flags
 set statusline+=%=       " Left/right separator
 set statusline+=%l/%L    " Cursor line/total lines
 set statusline+=\        " Space
 set statusline+=\        " Space
 set statusline+=%y       " Filetype
-set statusline+=\        " Space
 set statusline+=\        " Space
 
 
