@@ -7,7 +7,6 @@ if exists("syntax_on")
 endif
 let g:colors_name="vsdark"
 
-
 " Highlighting function (inspiration from https://github.com/chriskempson/base16-vim)
 if &t_Co >= 256
     let g:vsdark_term256=1
@@ -56,7 +55,6 @@ else
   let s:cterm09 = "06"
   let s:cterm0F = "03"
 endif
-
 
 " General appearance colors (some of them may be unused):
 let s:cdNone = {'gui': 'NONE', 'cterm': 'NONE', 'cterm256': 'NONE'}
@@ -132,7 +130,7 @@ call <sid>hi('DiffChange', {}, s:cdDiffRedDark, 'none', {})
 call <sid>hi('DiffDelete', {}, s:cdDiffRedLight, 'none', {})
 call <sid>hi('DiffText', {}, s:cdDiffRedLight, 'none', {})
 call <sid>hi('EndOfBuffer', s:cdLineNumber, s:cdBack, 'none', {})
-call <sid>hi('ErrorMsg', s:cdRed, s:cdBack, 'none', {})
+call <sid>hi('ErrorMsg', s:cdRed, s:cdNone, 'none', {})
 call <sid>hi('VertSplit', s:cdSplitDark, s:cdBack, 'none', {})
 call <sid>hi('Folded', s:cdLeftLight, s:cdLeftDark, 'underline', {})
 call <sid>hi('FoldColumn', s:cdLineNumber, s:cdBack, 'none', {})
@@ -173,7 +171,6 @@ call <sid>hi('Character', s:cdOrange, {}, 'none', {})
 call <sid>hi('Number', s:cdLightGreen, {}, 'none', {})
 call <sid>hi('Boolean', s:cdBlue, {}, 'none', {})
 call <sid>hi('Float', s:cdLightGreen, {}, 'none', {})
-
 call <sid>hi('Identifier', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('Function', s:cdYellow, {}, 'none', {})
 
@@ -182,8 +179,7 @@ call <sid>hi('Conditional', s:cdPink, {}, 'none', {})
 call <sid>hi('Repeat', s:cdPink, {}, 'none', {})
 call <sid>hi('Label', s:cdPink, {}, 'none', {})
 call <sid>hi('Operator', s:cdFront, {}, 'none', {})
-call <sid>hi('Keyword', s:cdPink, {}, 'none', {})
-call <sid>hi('pythonOperator', s:cdPink, {}, 'none', {})
+call <sid>hi('Keyword', s:cdBlue, {}, 'none', {})
 call <sid>hi('Exception', s:cdPink, {}, 'none', {})
 
 call <sid>hi('PreProc', s:cdPink, {}, 'none', {})
@@ -195,7 +191,8 @@ call <sid>hi('PreCondit', s:cdPink, {}, 'none', {})
 call <sid>hi('Type', s:cdBlue, {}, 'none', {})
 call <sid>hi('StorageClass', s:cdBlue, {}, 'none', {})
 call <sid>hi('Structure', s:cdBlue, {}, 'none', {})
-call <sid>hi('Typedef', s:cdBlue, {}, 'none', {})
+call <sid>hi('Keyword', s:cdBlue, {}, 'none', {})
+call <sid>hi('Class', s:cdBlueGreen, {}, 'none', {})
 
 call <sid>hi('Special', s:cdFront, {}, 'none', {})
 call <sid>hi('SpecialChar', s:cdFront, {}, 'none', {})
@@ -208,19 +205,17 @@ call <sid>hi('Underlined', s:cdNone, {}, 'underline', {})
 call <sid>hi("Conceal", s:cdFront, s:cdBack, 'none', {})
 
 call <sid>hi('Ignore', s:cdFront, {}, 'none', {})
-
-call <sid>hi('Error', s:cdRed, {}, 'undercurl', s:cdRed)
-
+call <sid>hi('Error', s:cdRed, s:cdNone, 'undercurl', s:cdRed)
 call <sid>hi('Todo', s:cdNone, s:cdLeftMid, 'none', {})
 
-" HTML:
+" HTML
 call <sid>hi('htmlTag', s:cdGray, {}, 'none', {})
 call <sid>hi('htmlEndTag', s:cdGray, {}, 'none', {})
 call <sid>hi('htmlTagName', s:cdBlue, {}, 'none', {})
 call <sid>hi('htmlSpecialTagName', s:cdBlue, {}, 'none', {})
 call <sid>hi('htmlArg', s:cdLightBlue, {}, 'none', {})
 
-" CSS:
+" CSS
 call <sid>hi('cssBraces', s:cdFront, {}, 'none', {})
 call <sid>hi('cssInclude', s:cdPink, {}, 'none', {})
 call <sid>hi('cssTagName', s:cdYellowOrange, {}, 'none', {})
@@ -241,12 +236,9 @@ call <sid>hi('cssValueNumber', s:cdOrange, {}, 'none', {})
 call <sid>hi('cssValueLength', s:cdOrange, {}, 'none', {})
 call <sid>hi('cssUnitDecorators', s:cdOrange, {}, 'none', {})
 
-" JavaScript:
+" JavaScript
 call <sid>hi('jsVariableDef', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('jsFuncArgs', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('jsRegexpString', s:cdLightRed, {}, 'none', {})
 call <sid>hi('jsThis', s:cdBlue, {}, 'none', {})
-
-" Ruby:
-call <sid>hi('rubyClassNameTag', s:cdBlueGreen, {}, 'none', {})
 

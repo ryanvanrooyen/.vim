@@ -22,7 +22,6 @@ elseif $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
 " Remap Ctrl + j/k keys to move lines up/down
 nnoremap <C-j> <Esc>:m+<Enter>==
 nnoremap <C-k> :m .-2<CR>==
@@ -52,25 +51,34 @@ nnoremap <CR> o<ESC>
 "autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
 
-" Specify theme stylings.
-    "set guitablabel=\[%N\]\ %t\ %M
-"autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 "let g:netrw_banner=0
-set title
 " colorscheme vsdark
+set title
 colorscheme vsdark
 let g:airline_theme = 'vsdark'
 syntax on
 set number
 set numberwidth=5
 set noshowcmd
-set noshowmode
+" set noshowmode
 set noruler
 set incsearch
 set hlsearch
 set wrapscan
 set softtabstop=4
 set shiftwidth=4
+set title
+
+" display the filename in the screen/window title and set it back to "bash" on exit
+autocmd BufEnter * let &titlestring = expand("%:t")
+let &titleold="bash"
+if &term == "screen"
+set t_ts=�k
+set t_fs=�\
+endif
+if &term == "screen" || &term == "xterm"
+  set title
+endif
 
 " Highlight the current line in the current window
 augroup CursorLine
