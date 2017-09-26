@@ -2,4 +2,5 @@
 *.ctrlpcache
 plugins
 .DS_Store
+.netrwhist
 *.swo

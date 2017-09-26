@@ -29,6 +29,30 @@ function! s:Python2Syntax()
   return s:Enabled("g:python_version_2")
 endfunction
 
+" syn region pythonArgList start='(' end=')' contains=pythonParameters 
+" syn region pythonFuncArgList start='(' end=')' 
+" syn region pythonFuncArgs start='(' end=')' contains=pythonFuncArgList,pythonParameters keepend
+" syn match pythonParameters /\i*\ze\s*=[^=]/ contained
+
+" syn region pythonFuncDefParams start=/\s*def .*(/ end=/)/ contains=cCondNest
+" syn region pythonFuncDefParams start=/def\s*.*(/ end=')' contains=pythonParamDefs
+" syn match pythonParamDefs /\i*\ze\s*=[^=]/ contained
+
+" syn keyword Keyword   def nextgroup=pythonFuncDef skipwhite
+" syn cluster pythonFuncDef contains=pythonFuncName,pythonParamDefs
+" syn region pythonFuncName start=/./ end='(' contained
+" syn match pythonFuncName /\C\<[a-z_]\+[a-z_0-9]\w*\>/ contained
+" syn match pythonParamDefs /\C\<[a-z]\+[a-z0-9]\w*\>/ contained
+
+syntax region xCond start=/def\s*.*(/ms=e+1 end=/)/me=s-1
+
+" hi def link pythonFunction Function
+hi def link xCond Error
+hi def link pythonFuncName Error
+hi def link pythonParamDefs Statement
+" hi def link pythonIdentifier Identifier
+
+
 " Keywords
 syn keyword Statement	    break continue del
 syn keyword Statement	    exec return yield
@@ -41,21 +65,20 @@ syn keyword Conditional	    if elif else
 syn keyword Include	    import from as
 syn keyword Exception	    try except finally
 syn keyword Boolean	    True False
-syn keyword Keyword	    self None and in is not or 
-syn keyword Keyword	    def nextgroup=Function skipwhite
+syn keyword Keyword	    None and in is not or 
 syn keyword Keyword	    class nextgroup=Class skipwhite
+syn keyword Identifier	    self
 
 syn match Class /\C\<[A-Z]\+[a-z0-9]\w*\>/
 
 
 if s:Python2Syntax()
-  if !s:Enabled("g:python_print_as_function")
-    syn keyword Statement  print
-  endif
+  syn keyword Statement  print
   syn match   Function    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
   syn match   Function    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 endif
+
 
 " Decorators (new in Python 2.4)
 syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
@@ -82,7 +105,7 @@ syn match pythonSpaceError	"\s\+$" display
 " Strings
 if s:Python2Syntax()
   " Python 2 strings
-  syn region pythonString   start=+[bB]\='+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,@Spell
+  syn region pythonString   start=+[bB]\='+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend cnontains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,@Spell
   syn region pythonString   start=+[bB]\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,@Spell
   syn region pythonString   start=+[bB]\="""+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
   syn region pythonString   start=+[bB]\='''+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
@@ -230,7 +253,6 @@ syn match   pythonFloat		"\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 
 " Builtin objects and types
-syn keyword pythonBuiltinObj	Ellipsis NotImplemented
 syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
 
 " Builtin functions
@@ -241,19 +263,20 @@ if s:Python2Syntax()
     syn keyword pythonBuiltinFunc	ascii exec memoryview
 endif
 
-syn keyword pythonBuiltinFunc	__import__ abs all any print
-syn keyword pythonBuiltinFunc	bin bool bytearray bytes
-syn keyword pythonBuiltinFunc	chr classmethod cmp compile complex
-syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
-syn keyword pythonBuiltinFunc	filter float format frozenset getattr
+syn keyword pythonBuiltinFunc	__import__ abs all any print bin
+syn keyword pythonBuiltinFunc	chr classmethod cmp compile 
+syn keyword pythonBuiltinFunc	delattr dir divmod enumerate eval
+syn keyword pythonBuiltinFunc	filter format getattr
 syn keyword pythonBuiltinFunc	globals hasattr hash hex id
-syn keyword pythonBuiltinFunc	input int isinstance
-syn keyword pythonBuiltinFunc	issubclass iter len list locals map max
-syn keyword pythonBuiltinFunc	min next object oct open ord
-syn keyword pythonBuiltinFunc	pow property range
-syn keyword pythonBuiltinFunc	repr reversed round set setattr
-syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
-syn keyword pythonBuiltinFunc	type vars zip
+syn keyword pythonBuiltinFunc	input isinstance
+syn keyword pythonBuiltinFunc	issubclass iter len locals map max
+syn keyword pythonBuiltinFunc	min next oct open ord pow range
+syn keyword pythonBuiltinFunc	repr reversed round setattr
+syn keyword pythonBuiltinFunc	sorted staticmethod sum super vars zip
+
+syn keyword pythonBuiltinTypeFunc   bool bytearray bytes complex dict float frozenset
+syn keyword pythonBuiltinTypeFunc   int list object property set slice str tuple type
+
 
 
 hi def link pythonDecorator        Function
@@ -306,6 +329,8 @@ hi def link pythonOctError         Error
 hi def link pythonHexError         Error
 hi def link pythonBinError         Error
 
+hi def link pythonBuiltinTypeFunc  Class
 hi def link pythonBuiltinObj       Structure
 hi def link pythonBuiltinFunc      Function
+
 

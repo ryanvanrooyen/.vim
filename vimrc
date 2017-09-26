@@ -2,13 +2,15 @@
 " Define all plugins
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Enable mouse support
 set mouse=a
 " Disable auto adding comment characters
 au FileType * set fo-=c fo-=r fo-=o
+
 
 " Fixes occasional issues with backspace key
 set backspace=indent,eol,start
@@ -21,6 +23,49 @@ elseif $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+" Map leader to the ; charcter.
+let mapleader = ";"
+
+" nnoremap <leader>f :copen<CR>
+" autocmd BufWinEnter quickfix map <leader>f <C-w>w
+" autocmd BufLeave quickfix map <leader>f <Esc>:copen<CR>
+
+" QuickFix window key bindings
+autocmd BufWinEnter quickfix map o <CR><C-W>w
+
+function s:FindInFiles(searchTerm)
+    let ag_cmd = 'ag --hidden --nogroup --nocolor -p ~/.zsh/.agignore ' . shellescape(a:searchTerm)
+    " echo ag_cmd
+    lgete system(ag_cmd)
+    lopen
+endfunction
+command! -nargs=1 Find call s:FindInFiles(<q-args>)
+nnoremap <leader>f :Find<space>
+
+function FindCurrentWord()
+    let wordUnderCursor = expand("<cword>")
+    call s:FindInFiles(wordUnderCursor)
+endfunction
+" bind K to grep word under cursor
+nnoremap K :call FindCurrentWord()<CR>
+
+nnoremap <leader>d :Files<Enter>
+nnoremap <C-n> :History<Enter>
+
+" Set leader then 'x' to quit and save changes
+nnoremap <leader>x :x<Enter>
+nnoremap <leader>X :xa<Enter>
+" Set leader then 'q' to quit and discard changes
+nnoremap <leader>q :q!<Enter>
+nnoremap <leader>Q :qa!<Enter>
+
+" Set leader then 'n' to search the current word under cursor
+nnoremap <leader>n *N
+
+" Allow double tapping leader key to toggle selected line comments
+nnoremap <leader><leader> :call NERDComment('n', 'Invert')<Enter>
+vnoremap <leader><leader> :call NERDComment('x', 'Invert')<Enter>
 
 " Remap Ctrl + j/k keys to move lines up/down
 nnoremap <C-j> <Esc>:m+<Enter>==
@@ -36,16 +81,30 @@ inoremap <C-l> <Tab>
 inoremap <C-h> <C-D>
 vnoremap <C-l> >gv
 vnoremap <C-h> <gv
+" Remap Ctrl + d/u keys to a smaller scroll amount
+nnoremap <C-d> 14j
+nnoremap <C-u> 14k
+inoremap <C-d> <Esc> 14ji
+inoremap <C-u> <Esc> 14ki
+vnoremap <C-d> 14j
+vnoremap <C-u> 14k
+
+nnoremap <C-t> :FZF<Enter>
+inoremap <C-t> <Esc> :FZF<Enter>
+vnoremap <C-t> :FZF<Enter>
 
 set clipboard=unnamed
 
 " Remap ctrl+s to save the current file
 nnoremap <C-s> :w<CR>
+nnoremap <leader>s :w<CR>
 vnoremap <C-s> <Esc><C-s>gv
+vnoremap <leader>s <Esc><C-s>gv
 inoremap <C-s> <Esc><C-s>
+inoremap <leader>s <Esc><C-s>
 
 " Remap Enter key to add new line blow current line.
-nnoremap <CR> o<ESC>
+" nnoremap <CR> o<ESC>
 "nnoremap <S-CR> O<ESC>
 "autocmd CmdwinEnter * nnoremap <CR> <CR>
 "autocmd BufReadPost quickfix nnoremap <CR> <CR>
@@ -109,9 +168,5 @@ set statusline+=\        " Space
 " Set custom NerdCommenter settings
 let g:NERDSpaceDelims = 1
 
-" Set custom ctrlP settings
-let g:ctrlp_custom_ignore='node_modules\|DS_Store\|.git\|Documents/pynalyzer/stc\|Documents/pynalyzer/local\|Documents/pynalyzer/salesforce\|Documents/pynalyzer/local/coverage\|Documents/pynalyzer/deploy'
-let g:ctrlp_cache_dir='~/.vim/.ctrlpcache'
-let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:15,results:15'
-"let g:ctrlp_match_window = 'top,order:ttb,min:2,max:15,results:15'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -p ~/.zsh/.agignore -g ""'
 
