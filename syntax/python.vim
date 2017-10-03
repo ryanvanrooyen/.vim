@@ -1,27 +1,5 @@
 " Vim syntax file
 " Language:	Python
-" Maintainer:	Zvezdan Petkovic <zpetkovic@acm.org>
-" Last Change:	2016 Apr 13
-" Credits:	Neil Schemenauer <nas@python.ca>
-"		Dmitry Vasiliev
-"
-"		This version is a major rewrite by Zvezdan Petkovic.
-"
-"		- introduced highlighting of doctests
-"		- updated keywords, built-ins, and exceptions
-"		- corrected regular expressions for
-"
-"		  * functions
-"		  * decorators
-"		  * strings
-"		  * escapes
-"		  * numbers
-"		  * space error
-"
-"		- corrected synchronization
-"		- more highlighting is ON by default, except:
-"		- self, cls keywords highlighting is OFF by default.
-
 
 " For version 5.x: Clear all syntax items.
 " For version 6.x: Quit when a syntax file was already loaded.
@@ -30,6 +8,7 @@ if version < 600
 elseif exists("b:current_syntax")
   finish
 endif
+
 
 " We need nocompatible mode in order to continue lines with backslashes.
 " Original setting will be restored.
