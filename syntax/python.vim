@@ -20,26 +20,8 @@
 "
 "		- corrected synchronization
 "		- more highlighting is ON by default, except:
-"		- space error highlighting is OFF by default,
 "		- self, cls keywords highlighting is OFF by default.
-"
-" Optional highlighting can be controlled using these variables.
-"
-"   let python_no_builtin_highlight = 1
-"   let python_no_doctest_code_highlight = 1
-"   let python_no_doctest_highlight = 1
-"   let python_no_exception_highlight = 1
-"   let python_no_number_highlight = 1
-"   let python_space_error_highlight = 1
-"
-"   let python_no_parameter_highlight = 1
-"   let python_no_operator_highlight = 1
-"   let python_self_cls_highlight = 1
-"
-" All the options above can be switched on together.
-"
-"   let python_highlight_all = 1
-"
+
 
 " For version 5.x: Clear all syntax items.
 " For version 6.x: Quit when a syntax file was already loaded.
@@ -68,7 +50,6 @@ set cpo&vim
 " We include Python 3 features, but when a definition is duplicated,
 " the last definition takes precedence.
 "
-" - 'False', 'None', and 'True' are keywords in Python 3 but they are built-ins in 2
 " - 'exec' is a built-in in Python 3 and will be highlighted as
 "   built-in below.
 " - 'nonlocal' is a keyword in Python 3 and will be highlighted.
@@ -225,26 +206,29 @@ syn keyword pythonBuiltinClass	float frozenset int list object
 syn keyword pythonBuiltinClass	property set slice staticmethod str
 syn keyword pythonBuiltinClass	super tuple type 
 
-syn keyword pythonBuiltin	NotImplemented Ellipsis __debug__
 " built-in functions
-syn keyword pythonBuiltin	abs all any bin callable chr
-syn keyword pythonBuiltin	compile delattr dir 
-syn keyword pythonBuiltin	divmod enumerate eval filter format
-syn keyword pythonBuiltin	getattr globals hasattr hash
-syn keyword pythonBuiltin	help hex id input isinstance
-syn keyword pythonBuiltin	issubclass iter len locals map max
-syn keyword pythonBuiltin	memoryview min next oct open ord pow
-syn keyword pythonBuiltin	print range repr reversed round
-syn keyword pythonBuiltin	setattr sorted sum vars zip __import__
+" syn keyword pythonBuiltin	NotImplemented Ellipsis __debug__
+" syn keyword pythonBuiltin	abs all any bin callable chr
+" syn keyword pythonBuiltin	compile delattr dir 
+" syn keyword pythonBuiltin	divmod enumerate eval filter format 
+" syn keyword pythonBuiltin	getattr globals hasattr hash
+" syn keyword pythonBuiltin	help hex id input isinstance
+" syn keyword pythonBuiltin	issubclass iter len locals map max
+" syn keyword pythonBuiltin	memoryview min next oct open ord pow
+" syn keyword pythonBuiltin	print range repr reversed round
+" syn keyword pythonBuiltin	setattr sorted sum vars zip __import__
+
 " Python 2 only
-syn keyword pythonBuiltin	basestring cmp execfile file
-syn keyword pythonBuiltin	long raw_input reduce reload unichr
-syn keyword pythonBuiltin	unicode xrange
+" syn keyword pythonBuiltin	basestring cmp execfile file
+" syn keyword pythonBuiltin	long raw_input reduce reload unichr
+" syn keyword pythonBuiltin	unicode xrange
+
 " Python 3 only
-syn keyword pythonBuiltinClass	bytes
-syn keyword pythonBuiltin	ascii exec
+" syn keyword pythonBuiltinClass	bytes
+" syn keyword pythonBuiltin	ascii exec
+
 " non-essential built-in functions; Python 2 only
-syn keyword pythonBuiltin	apply buffer coerce intern
+" syn keyword pythonBuiltin	apply buffer coerce intern
 " avoid highlighting attributes as builtins
 " syn match   pythonAttribute	/\.\h\w*/hs=s+1 contains=ALLBUT,pythonBuiltin transparent
 
