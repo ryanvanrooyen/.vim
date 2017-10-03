@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/syntastic'
 call plug#end()
 
 " Enable mouse support
@@ -164,9 +165,17 @@ set statusline+=\        " Space
 set statusline+=%y       " Filetype
 set statusline+=\        " Space
 
+" set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " Set custom NerdCommenter settings
 let g:NERDSpaceDelims = 1
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden -p ~/.zsh/.agignore -g ""'
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 

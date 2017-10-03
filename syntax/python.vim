@@ -43,7 +43,7 @@ syn keyword pythonSelf		self
 syn keyword pythonNone		None
 syn keyword pythonBoolean	False True
 syn keyword pythonStatement	as assert break continue del exec global
-syn keyword pythonStatement	lambda nonlocal pass print return with
+syn keyword pythonStatement	lambda nonlocal pass return with
 syn keyword pythonConditional	elif else if
 syn keyword pythonRepeat	for while
 syn keyword pythonOperator	and in is not or
@@ -324,7 +324,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonNumber		Number
   HiLink pythonBuiltin		Function
   HiLink pythonExceptions	Class
-  HiLink pythonSpaceError	Error
+  HiLink pythonSpaceError	SpaceError
   HiLink pythonDoctest		Special
   HiLink pythonDoctestValue	Define
 

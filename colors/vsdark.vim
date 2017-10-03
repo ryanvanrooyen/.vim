@@ -149,7 +149,7 @@ call <sid>hi('PmenuThumb', {}, s:cdPopupFront, 'none', {})
 call <sid>hi('Question', s:cdBlue, s:cdBack, 'none', {})
 call <sid>hi('Search', s:cdNone, s:cdSearch, 'none', {})
 call <sid>hi('SpecialKey', s:cdBlue, s:cdNone, 'none', {})
-call <sid>hi('SpellBad', s:cdNone, s:cdNone, 'underline', {})
+call <sid>hi('SpellBad', s:cdRed, s:cdNone, 'undercurl', {})
 call <sid>hi('SpellCap', s:cdNone, s:cdNone, 'underline', {})
 call <sid>hi('SpellLocal', s:cdNone, s:cdNone, 'underline', {})
 call <sid>hi('StatusLine', s:cdFront, s:cdLeftMid, 'none', {})
@@ -205,7 +205,8 @@ call <sid>hi('Underlined', s:cdNone, {}, 'underline', {})
 call <sid>hi("Conceal", s:cdFront, s:cdBack, 'none', {})
 
 call <sid>hi('Ignore', s:cdFront, {}, 'none', {})
-call <sid>hi('Error', s:cdRed, s:cdNone, 'undercurl', s:cdRed)
+call <sid>hi('Error', s:cdRed, s:cdNone, 'none', {})
+call <sid>hi('SpaceError', s:cdRed, s:cdNone, 'undercurl', {})
 call <sid>hi('Todo', s:cdNone, s:cdLeftMid, 'none', {})
 
 " HTML
