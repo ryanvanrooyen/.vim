@@ -106,7 +106,7 @@ syn match  pythonFunction "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*" con
 syn region pythonFunctionDefVars start="(" end=")" contained contains=pythonFunctionDefParameters transparent keepend
 syn region pythonFunctionCallVars start="(" end=")" contained contains=pythonFunctionCallParameters
 syn match  pythonFunctionDefParameters "[^,]*" contained contains=pythonSelf,pythonKeywordArg,pythonExtraOperator,pythonConstant,pythonNone,pythonBoolean,pythonStatement,pythonNumber,pythonString,pythonBrackets skipwhite
-syn match  pythonFunctionCallParameters "[^,]*" contained contains=pythonSelf,pythonKeywordArg,pythonOperator,pythonExtraOperator,pythonBuiltin,pythonBuiltinClass,pythonNone,pythonBoolean,pythonRepeat,pythonBrackets,pythonStatement,pythonNumber,pythonString,pythonFuncCall,pythonClassCall,pythonFunctionCallVars skipwhite
+syn match  pythonFunctionCallParameters "[^,]*" contained contains=pythonSelf,pythonKeywordArg,pythonOperator,pythonExtraOperator,pythonBuiltin,pythonBuiltinClass,pythonNone,pythonBoolean,pythonConditional,pythonRepeat,pythonBrackets,pythonStatement,pythonNumber,pythonString,pythonFuncCall,pythonClassCall,pythonFunctionCallVars skipwhite
 
 syn match pythonKeywordArg "\s*\zs\w\+\ze\s*=[^=]" contained keepend
 syn match test "blah" contained 
