@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'henrik/vim-indexed-search'
 Plug 'scrooloose/syntastic'
 call plug#end()
 
@@ -82,13 +83,6 @@ inoremap <C-l> <Tab>
 inoremap <C-h> <C-D>
 vnoremap <C-l> >gv
 vnoremap <C-h> <gv
-" Remap Ctrl + d/u keys to a smaller scroll amount
-nnoremap <C-d> 14j
-nnoremap <C-u> 14k
-inoremap <C-d> <Esc> 14ji
-inoremap <C-u> <Esc> 14ki
-vnoremap <C-d> 14j
-vnoremap <C-u> 14k
 
 nnoremap <C-t> :FZF<Enter>
 inoremap <C-t> <Esc> :FZF<Enter>
@@ -181,3 +175,4 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+set scroll=5
