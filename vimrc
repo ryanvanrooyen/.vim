@@ -13,7 +13,6 @@ set mouse=a
 " Disable auto adding comment characters
 au FileType * set fo-=c fo-=r fo-=o
 
-
 " Fixes occasional issues with backspace key
 set backspace=indent,eol,start
 
@@ -97,19 +96,14 @@ vnoremap <C-s> <Esc><C-s>gv
 vnoremap <leader>s <Esc><C-s>gv
 inoremap <C-s> <Esc><C-s>
 inoremap <leader>s <Esc><C-s>
-
-" Remap Enter key to add new line blow current line.
 " nnoremap <CR> o<ESC>
 "nnoremap <S-CR> O<ESC>
 "autocmd CmdwinEnter * nnoremap <CR> <CR>
 "autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
-
 "let g:netrw_banner=0
 " colorscheme vsdark
-set title
 colorscheme vsdark
-let g:airline_theme = 'vsdark'
 syntax on
 set number
 set numberwidth=5
@@ -124,22 +118,22 @@ set shiftwidth=4
 set title
 
 " display the filename in the screen/window title and set it back to "bash" on exit
-autocmd BufEnter * let &titlestring = expand("%:t")
-let &titleold="bash"
-if &term == "screen"
-set t_ts=�k
-set t_fs=�\
-endif
-if &term == "screen" || &term == "xterm"
-  set title
-endif
+" autocmd BufEnter * let &titlestring = expand("%:t")
+" let &titleold="bash"
+" if &term == "screen"
+" set t_ts=�k
+" set t_fs=�\
+" endif
+" if &term == "screen" || &term == "xterm"
+  " set title
+" endif
 
 " Highlight the current line in the current window
-augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-augroup END
+" augroup CursorLine
+    " au!
+    " au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    " au WinLeave * setlocal nocursorline
+" augroup END
 
 " VimDiff Settings
 set diffopt+=iwhite
@@ -160,7 +154,7 @@ set statusline+=%y       " Filetype
 set statusline+=\        " Space
 
 " set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
 " Set custom NerdCommenter settings
