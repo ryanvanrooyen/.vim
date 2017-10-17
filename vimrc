@@ -51,24 +51,24 @@ function FindCurrentWord()
     call s:FindInFiles(wordUnderCursor)
 endfunction
 " bind K to grep word under cursor
-nnoremap K :call FindCurrentWord()<CR>
+nnoremap <silent> K :call FindCurrentWord()<CR>
 
-nnoremap <leader>d :Files<Enter>
-nnoremap <C-n> :History<Enter>
+nnoremap <silent> <leader>d :Files<Enter>
+nnoremap <silent> <C-n> :History<Enter>
 
 " Set leader then 'x' to quit and save changes
-nnoremap <leader>x :x<Enter>
-nnoremap <leader>X :xa<Enter>
+nnoremap <silent> <leader>x :x<Enter>
+nnoremap <silent> <leader>X :xa<Enter>
 " Set leader then 'q' to quit and discard changes
-nnoremap <leader>q :q!<Enter>
-nnoremap <leader>Q :qa!<Enter>
+nnoremap <silent> <leader>q :q!<Enter>
+nnoremap <silent> <leader>Q :qa!<Enter>
 
 " Set leader then 'n' to search the current word under cursor
-nnoremap <leader>n *N
+nnoremap <silent> <leader>n *N
 
 " Allow double tapping leader key to toggle selected line comments
-nnoremap <leader><leader> :call NERDComment('n', 'Invert')<Enter>
-vnoremap <leader><leader> :call NERDComment('x', 'Invert')<Enter>
+nnoremap <silent> <leader><leader> :call NERDComment('n', 'Invert')<Enter>
+vnoremap <silent> <leader><leader> :call NERDComment('x', 'Invert')<Enter>
 
 let g:multi_cursor_quit_key='<C-c>'
 nnoremap <C-c> :call multiple_cursors#quit()<CR>
@@ -88,9 +88,9 @@ inoremap <C-h> <C-D>
 vnoremap <C-l> >gv
 vnoremap <C-h> <gv
 
-nnoremap <C-t> :FZF<Enter>
-inoremap <C-t> <Esc> :FZF<Enter>
-vnoremap <C-t> :FZF<Enter>
+nnoremap <silent> <C-p> :FZF<Enter>
+inoremap <silent> <C-p> <Esc> :FZF<Enter>
+vnoremap <silent> <C-p> :FZF<Enter>
 
 set clipboard=unnamed
 
