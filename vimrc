@@ -6,7 +6,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'scrooloose/syntastic'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'pangloss/vim-javascript'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'valloric/youcompleteme'
 call plug#end()
 
@@ -38,7 +39,7 @@ let mapleader = ";"
 autocmd BufWinEnter quickfix map o <CR><C-W>w
 
 function s:FindInFiles(searchTerm)
-    let ag_cmd = 'ag --hidden --nogroup --nocolor -p ~/.zsh/.agignore ' . shellescape(a:searchTerm)
+    let ag_cmd = 'ag -Q --hidden --nogroup --nocolor -p ~/.zsh/.agignore ' . shellescape(a:searchTerm)
     " echo ag_cmd
     lgete system(ag_cmd)
     lopen
@@ -70,8 +71,8 @@ nnoremap <silent> <leader>n *N
 nnoremap <silent> <leader><leader> :call NERDComment('n', 'Invert')<Enter>
 vnoremap <silent> <leader><leader> :call NERDComment('x', 'Invert')<Enter>
 
-let g:multi_cursor_quit_key='<C-c>'
-nnoremap <C-c> :call multiple_cursors#quit()<CR>
+" let g:multi_cursor_quit_key='<C-c>'
+" nnoremap <C-c> :call multiple_cursors#quit()<CR>
 
 " Remap Ctrl + j/k keys to move lines up/down
 nnoremap <C-j> <Esc>:m+<Enter>==
@@ -153,7 +154,7 @@ set statusline+=\        " Space
 " Set custom NerdCommenter settings
 let g:NERDSpaceDelims = 1
 
-let $FZF_DEFAULT_COMMAND = 'ag --hidden -p ~/.zsh/.agignore -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -Q --hidden -p ~/.zsh/.agignore -g ""'
 
 " Set custom Syntastic settings
 let g:syntastic_mode_map={'mode': 'passive'}
@@ -162,5 +163,5 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-set scroll=5
+set scroll=8
 
