@@ -4,11 +4,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'henrik/vim-indexed-search'
 Plug 'scrooloose/syntastic'
-Plug 'pangloss/vim-javascript'
-" Plug 'terryma/vim-multiple-cursors'
-Plug 'valloric/youcompleteme'
 call plug#end()
 
 " Enable mouse support
@@ -65,7 +61,8 @@ nnoremap <silent> <leader>q :q!<Enter>
 nnoremap <silent> <leader>Q :qa!<Enter>
 
 " Set leader then 'n' to search the current word under cursor
-nnoremap <silent> <leader>n *N
+nnoremap <leader>n :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:%s///gn<CR><C-O>
+nnoremap <silent> <leader>/ :noh<Enter>
 
 " Allow double tapping leader key to toggle selected line comments
 nnoremap <silent> <leader><leader> :call NERDComment('n', 'Invert')<Enter>
@@ -102,10 +99,17 @@ vnoremap <C-s> <Esc><C-s>gv
 vnoremap <leader>s <Esc><C-s>gv
 inoremap <C-s> <Esc><C-s>
 inoremap <leader>s <Esc><C-s>
-" nnoremap <CR> o<ESC>
-"nnoremap <S-CR> O<ESC>
 "autocmd CmdwinEnter * nnoremap <CR> <CR>
 "autocmd BufReadPost quickfix nnoremap <CR> <CR>
+
+" Set better directory viewer defaults:
+" Turn off the banner
+let g:netrw_banner = 0
+" Open files in new split
+let g:netrw_browse_split = 2
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 "let g:netrw_banner=0
 " colorscheme vsdark
@@ -163,5 +167,5 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-set scroll=8
+set scroll=10
 
