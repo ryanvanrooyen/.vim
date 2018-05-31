@@ -5,6 +5,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/syntastic'
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 " Enable mouse support
@@ -167,5 +168,8 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-set scroll=10
+let g:cpp_class_decl_highlight = 1
+let g:cpp_class_scope_highlight = 1
+
+set scroll=20
 
