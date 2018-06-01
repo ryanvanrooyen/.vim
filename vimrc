@@ -171,5 +171,8 @@ let g:syntastic_check_on_wq = 0
 let g:cpp_class_decl_highlight = 1
 let g:cpp_class_scope_highlight = 1
 
+" Additional file extensions
+autocmd BufNewFile,BufRead *.es6 set syntax=javascript
+
 set scroll=20
 

@@ -62,7 +62,6 @@ syn match pythonExtraPseudoOperator "\%(-=\|/=\|\*\*=\|\*=\|&&=\|&=\|&&\|||=\||=
 
 syn region pythonFuncCall	start="\s*\zs\(\<_*[a-z]\+\w*\)\+\ze(" end=")" contains=pythonFunctionCallVars keepend extend
 
-" Decorators (new in Python 2.4)
 syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
 " The zero-length non-grouping match before the function name is
 " extremely important in pythonFunction.  Without it, everything is
@@ -74,7 +73,7 @@ syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
 syn match pythonBrackets "[(|)]" contained skipwhite
 
 " Classes
-syn match  pythonClass /\<[A-Z]\+\w*\>/
+syn match  pythonClass /\<[A-Z]\+\w*\>/ contained
 syn region pythonClassCall	start="\s*\zs\(\<[A-Z]\+\w*\)\+\ze(" end=")" contains=pythonFunctionCallVars keepend extend
 syn match  pythonClassDef "\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*" contained nextgroup=pythonClassVars
 syn region pythonClassVars start="(" end=")" contained contains=pythonClassParameters transparent keepend
