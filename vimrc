@@ -59,6 +59,7 @@ nnoremap <silent> <leader>X :xa<Enter>
 " Set leader then 'q' to quit and discard changes
 nnoremap <silent> <leader>q :q!<Enter>
 nnoremap <silent> <leader>Q :qa!<Enter>
+nnoremap <silent> Q :qa!<Enter>
 
 " Set leader then 'n' to search the current word under cursor
 nnoremap <leader>n :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:%s///gn<CR><C-O>
