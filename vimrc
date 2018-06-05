@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'bfrg/vim-cpp-modern'
 " Plug 'scrooloose/syntastic'
 call plug#end()
 
@@ -11,6 +12,9 @@ call plug#end()
 set mouse=a
 " Disable auto adding comment characters
 au FileType * set fo-=c fo-=r fo-=o
+
+" set foldmethod=indent
+" set foldnestmax=1
 
 " Fixes occasional issues with backspace key
 set backspace=indent,eol,start
