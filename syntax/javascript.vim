@@ -38,6 +38,7 @@ syntax match   jsOperator       "[-!|&+<>=%/*~^]" skipwhite skipempty nextgroup=
 syntax match   jsOperator       /::/ skipwhite skipempty nextgroup=@jsExpression
 syntax keyword jsBooleanTrue    true
 syntax keyword jsBooleanFalse   false
+syntax keyword arrowFunc	=>
 
 " Modules
 syntax keyword jsImport                       import skipwhite skipempty nextgroup=jsModuleAsterisk,jsModuleKeyword,jsModuleGroup,jsFlowImportType
@@ -110,21 +111,17 @@ syntax keyword jsAsyncKeyword           async await
 syntax match   jsSwitchColon   contained /::\@!/        skipwhite skipempty nextgroup=jsSwitchBlock
 
 " Keywords
-syntax keyword jsGlobalObjects      Array Boolean Date Function Iterator Number Object Symbol Map WeakMap Set WeakSet RegExp String Proxy Promise Buffer ParallelArray ArrayBuffer DataView Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray JSON Math console document window Intl Collator DateTimeFormat NumberFormat fetch
+syntax keyword jsGlobalObjects      Array Boolean Date Function Iterator Number Object Symbol Map WeakMap Set WeakSet RegExp String Proxy Promise Buffer ParallelArray ArrayBuffer DataView Float32Array Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array Uint8Array Uint8ClampedArray JSON Math console document window Intl Collator DateTimeFormat NumberFormat
 syntax keyword jsGlobalNodeObjects  module exports global process __dirname __filename
 syntax match   jsGlobalNodeObjects  /\<require\>/ containedin=jsFuncCall
 syntax keyword jsExceptions         Error EvalError InternalError RangeError ReferenceError StopIteration SyntaxError TypeError URIError
-syntax keyword jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval
+syntax keyword jsBuiltins           decodeURI decodeURIComponent encodeURI encodeURIComponent eval isFinite isNaN parseFloat parseInt uneval fetch
 " DISCUSS: How imporant is this, really? Perhaps it should be linked to an error because I assume the keywords are reserved?
 syntax keyword jsFutureKeys         abstract enum int short boolean interface byte long char final native synchronized float package throws goto private transient implements protected volatile double public
 
-" DISCUSS: Should we really be matching stuff like this?
-" DOM2 Objects
-syntax keyword jsGlobalObjects  DOMImplementation DocumentFragment Document Node NodeList NamedNodeMap CharacterData Attr Element Text Comment CDATASection DocumentType Notation Entity EntityReference ProcessingInstruction
+" syntax keyword jsGlobalObjects  DOMImplementation DocumentFragment Document Node NodeList NamedNodeMap CharacterData Attr Element Text Comment CDATASection DocumentType Notation Entity EntityReference ProcessingInstruction
 syntax keyword jsExceptions     DOMException
 
-" DISCUSS: Should we really be matching stuff like this?
-" DOM2 CONSTANT
 syntax keyword jsDomErrNo       INDEX_SIZE_ERR DOMSTRING_SIZE_ERR HIERARCHY_REQUEST_ERR WRONG_DOCUMENT_ERR INVALID_CHARACTER_ERR NO_DATA_ALLOWED_ERR NO_MODIFICATION_ALLOWED_ERR NOT_FOUND_ERR NOT_SUPPORTED_ERR INUSE_ATTRIBUTE_ERR INVALID_STATE_ERR SYNTAX_ERR INVALID_MODIFICATION_ERR NAMESPACE_ERR INVALID_ACCESS_ERR
 syntax keyword jsDomNodeConsts  ELEMENT_NODE ATTRIBUTE_NODE TEXT_NODE CDATA_SECTION_NODE ENTITY_REFERENCE_NODE ENTITY_NODE PROCESSING_INSTRUCTION_NODE COMMENT_NODE DOCUMENT_NODE DOCUMENT_TYPE_NODE DOCUMENT_FRAGMENT_NODE NOTATION_NODE
 
@@ -292,13 +289,15 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsArguments            Special
   HiLink jsError                Error
   HiLink jsParensError          Error
-  HiLink jsOperatorKeyword      jsOperator
+  HiLink jsOperatorKeyword      Keyword
   HiLink jsOperator             Operator
   HiLink jsOf                   Operator
   HiLink jsStorageClass         StorageClass
   HiLink jsClassKeyword         Keyword
   HiLink jsExtendsKeyword       Keyword
-  HiLink jsThis                 Special
+  HiLink jsThis                 Keyword
+  HiLink jsVariableDef          Identifier
+  HiLink jsFuncArgs		Identifier
   HiLink jsSuper                Constant
   HiLink jsNan                  Number
   HiLink jsNull                 Type
@@ -326,8 +325,8 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink jsSwitchBraces         Noise
   HiLink jsSpecial              Special
   HiLink jsTemplateBraces       Noise
-  HiLink jsGlobalObjects        Constant
-  HiLink jsGlobalNodeObjects    Constant
+  HiLink jsGlobalObjects        Class
+  HiLink jsGlobalNodeObjects    Keyword
   HiLink jsExceptions           Constant
   HiLink jsBuiltins             Constant
   HiLink jsImport               Include

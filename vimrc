@@ -19,21 +19,9 @@ au FileType * set fo-=c fo-=r fo-=o
 " Fixes occasional issues with backspace key
 set backspace=indent,eol,start
 
-if $TMUX =~ ","
-    let &t_SI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=1\x7\<esc>\\"
-    let &t_EI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=0\x7\<esc>\\"
-elseif $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-
-" Map leader to the ; charcter.
-let mapleader = ";"
-
-" nnoremap <leader>f :copen<CR>
-" autocmd BufWinEnter quickfix map <leader>f <C-w>w
-" autocmd BufLeave quickfix map <leader>f <Esc>:copen<CR>
+" Set block cursor in normal mode and line in edit mode
+let &t_SI="\033[6 q" " start insert mode
+let &t_EI="\033[0 q" " end insert mode
 
 " QuickFix window key bindings
 autocmd BufWinEnter quickfix map o <CR><C-W>w
@@ -45,7 +33,7 @@ function s:FindInFiles(searchTerm)
     lopen
 endfunction
 command! -nargs=1 Find call s:FindInFiles(<q-args>)
-nnoremap <leader>f :Find<space>
+nnoremap ;f :Find<space>
 
 function FindCurrentWord()
     let wordUnderCursor = expand("<cword>")
@@ -54,24 +42,24 @@ endfunction
 " bind K to grep word under cursor
 nnoremap <silent> K :call FindCurrentWord()<CR>
 
-nnoremap <silent> <leader>d :Files<Enter>
+nnoremap <silent> ;d :Files<Enter>
 nnoremap <silent> <C-n> :History<Enter>
 
-" Set leader then 'x' to quit and save changes
-nnoremap <silent> <leader>x :x<Enter>
-nnoremap <silent> <leader>X :xa<Enter>
-" Set leader then 'q' to quit and discard changes
-nnoremap <silent> <leader>q :q!<Enter>
-nnoremap <silent> <leader>Q :qa!<Enter>
+" Set ; then 'x' to quit and save changes
+nnoremap <silent> ;x :x<Enter>
+nnoremap <silent> ;X :xa<Enter>
+" Set ; then 'q' to quit and discard changes
+nnoremap <silent> ;q :q!<Enter>
+nnoremap <silent> ;Q :qa!<Enter>
 nnoremap <silent> Q :qa!<Enter>
 
-" Set leader then 'n' to search the current word under cursor
-nnoremap <leader>n :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:%s///gn<CR><C-O>
-nnoremap <silent> <leader>/ :noh<Enter>
+" Set ; then 'n' to search the current word under cursor
+nnoremap ;n :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:%s///gn<CR><C-O>
+nnoremap <silent> ;/ :noh<Enter>
 
-" Allow double tapping leader key to toggle selected line comments
-nnoremap <silent> <leader><leader> :call NERDComment('n', 'Invert')<Enter>
-vnoremap <silent> <leader><leader> :call NERDComment('x', 'Invert')<Enter>
+" Allow double tapping ; to toggle selected line comments
+nnoremap <silent> ;; :call NERDComment('n', 'Invert')<Enter>
+vnoremap <silent> ;; :call NERDComment('x', 'Invert')<Enter>
 
 " let g:multi_cursor_quit_key='<C-c>'
 " nnoremap <C-c> :call multiple_cursors#quit()<CR>
@@ -99,11 +87,9 @@ set clipboard=unnamed
 
 " Remap ctrl+s to save the current file
 nnoremap <C-s> :w<CR>
-nnoremap <leader>s :w<CR>
+nnoremap ;s :w<CR>
 vnoremap <C-s> <Esc><C-s>gv
-vnoremap <leader>s <Esc><C-s>gv
-inoremap <C-s> <Esc><C-s>
-inoremap <leader>s <Esc><C-s>
+vnoremap ;s <Esc><C-s>gv
 "autocmd CmdwinEnter * nnoremap <CR> <CR>
 "autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
