@@ -5,7 +5,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'bfrg/vim-cpp-modern'
-" Plug 'scrooloose/syntastic'
 call plug#end()
 
 " Enable mouse support
@@ -42,12 +41,14 @@ endfunction
 " bind K to grep word under cursor
 nnoremap <silent> K :call FindCurrentWord()<CR>
 
+nnoremap <silent> ;a @
 nnoremap <silent> ;d :Files<Enter>
 nnoremap <silent> <C-n> :History<Enter>
 
 " Set ; then 'x' to quit and save changes
 nnoremap <silent> ;x :x<Enter>
 nnoremap <silent> ;X :xa<Enter>
+nnoremap <silent> X :xa<Enter>
 " Set ; then 'q' to quit and discard changes
 nnoremap <silent> ;q :q!<Enter>
 nnoremap <silent> ;Q :qa!<Enter>
@@ -60,9 +61,6 @@ nnoremap <silent> ;/ :noh<Enter>
 " Allow double tapping ; to toggle selected line comments
 nnoremap <silent> ;; :call NERDComment('n', 'Invert')<Enter>
 vnoremap <silent> ;; :call NERDComment('x', 'Invert')<Enter>
-
-" let g:multi_cursor_quit_key='<C-c>'
-" nnoremap <C-c> :call multiple_cursors#quit()<CR>
 
 " Remap Ctrl + j/k keys to move lines up/down
 nnoremap <C-j> <Esc>:m+<Enter>==
@@ -87,11 +85,7 @@ set clipboard=unnamed
 
 " Remap ctrl+s to save the current file
 nnoremap <C-s> :w<CR>
-nnoremap ;s :w<CR>
 vnoremap <C-s> <Esc><C-s>gv
-vnoremap ;s <Esc><C-s>gv
-"autocmd CmdwinEnter * nnoremap <CR> <CR>
-"autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
 " Set better directory viewer defaults:
 " Turn off the banner
@@ -117,13 +111,6 @@ set wrapscan
 set softtabstop=4
 set shiftwidth=4
 
-" Highlight the current line in the current window
-" augroup CursorLine
-    " au!
-    " au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    " au WinLeave * setlocal nocursorline
-" augroup END
-
 " VimDiff Settings
 set diffopt+=iwhite
 set diffexpr=""
@@ -143,20 +130,12 @@ set statusline+=%y       " Filetype
 set statusline+=\        " Space
 
 " set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
 " Set custom NerdCommenter settings
 let g:NERDSpaceDelims = 1
 
 let $FZF_DEFAULT_COMMAND = 'ag -Q --hidden -p ~/.zsh/.agignore -g ""'
-
-" Set custom Syntastic settings
-let g:syntastic_mode_map={'mode': 'passive'}
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 let g:cpp_class_decl_highlight = 1
 let g:cpp_class_scope_highlight = 1
