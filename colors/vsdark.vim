@@ -74,7 +74,7 @@ let s:cdPopupHighlightBlue = {'gui': '#073655', 'cterm': s:cterm0D, 'cterm256': 
 let s:cdPopupHighlightGray = {'gui': '#3D3D40', 'cterm': s:cterm03, 'cterm256': '237'}
 
 let s:cdSplitLight = {'gui': '#898989', 'cterm': s:cterm04, 'cterm256': '245'}
-let s:cdSplitDark = {'gui': '#444444', 'cterm': s:cterm03, 'cterm256': '238'}
+let s:cdSplitDark = {'gui': '#444444', 'cterm': s:cterm02, 'cterm256': '234'}
 let s:cdSplitThumb = {'gui': '#424242', 'cterm': s:cterm04, 'cterm256': '238'}
 
 let s:cdCursorDarkDark = {'gui': '#222222', 'cterm': s:cterm01, 'cterm256': '236'}
@@ -123,7 +123,7 @@ call <sid>hi('DiffDelete', s:cdDiffChangeGray, s:cdNone, 'none', s:cdNone)
 call <sid>hi('DiffText', s:cdNone, s:cdTextDiff, 'none', s:cdNone)
 call <sid>hi('EndOfBuffer', s:cdLineNumber, s:cdNone, 'none', {})
 call <sid>hi('ErrorMsg', s:cdDarkRed, s:cdNone, 'none', {})
-call <sid>hi('VertSplit', s:cdSplitDark, s:cdNone, 'none', {})
+call <sid>hi('VertSplit', s:cdSplitDark, s:cdSplitDark, 'none', {})
 call <sid>hi('Folded', s:cdLeftLight, s:cdLeftDark, 'underline', {})
 call <sid>hi('FoldColumn', s:cdLineNumber, s:cdNone, 'none', {})
 call <sid>hi('SignColumn', {}, s:cdNone, 'none', {})
