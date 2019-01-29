@@ -60,9 +60,9 @@ endif
 let s:cdNone = {'gui': 'NONE', 'cterm': 'NONE', 'cterm256': 'NONE'}
 let s:cdFront = {'gui': '#D4D4D4', 'cterm': s:cterm05, 'cterm256': '188'}
 
-let s:cdTabCurrent = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '234'}
+let s:cdTabCurrent = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '235'}
 let s:cdTabOther = {'gui': '#2D2D2D', 'cterm': s:cterm01, 'cterm256': '236'}
-let s:cdTabOutside = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '235'}
+let s:cdTabOutside = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '236'}
 
 let s:cdLeftDark = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '235'}
 let s:cdLeftMid = {'gui': '#373737', 'cterm': s:cterm03, 'cterm256': '237'}
@@ -74,7 +74,7 @@ let s:cdPopupHighlightBlue = {'gui': '#073655', 'cterm': s:cterm0D, 'cterm256': 
 let s:cdPopupHighlightGray = {'gui': '#3D3D40', 'cterm': s:cterm03, 'cterm256': '237'}
 
 let s:cdSplitLight = {'gui': '#898989', 'cterm': s:cterm04, 'cterm256': '245'}
-let s:cdSplitDark = {'gui': '#444444', 'cterm': s:cterm02, 'cterm256': '234'}
+let s:cdSplitDark = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '236'}
 let s:cdSplitThumb = {'gui': '#424242', 'cterm': s:cterm04, 'cterm256': '238'}
 
 let s:cdCursorDarkDark = {'gui': '#222222', 'cterm': s:cterm01, 'cterm256': '236'}
@@ -84,7 +84,7 @@ let s:cdSelection = {'gui': '#264F78', 'cterm': s:cterm03, 'cterm256': '24'}
 let s:cdLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '237'}
 let s:cdCurrentLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '238'}
 
-let s:cdDiffChangeGray = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '237'}
+let s:cdDiffChangeGray = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '235'}
 let s:cdTextDiff = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '52'}
 
 let s:cdSearchCurrent = {'gui': '#49545F', 'cterm': s:cterm09, 'cterm256': '239'}
@@ -148,7 +148,7 @@ call <sid>hi('StatusLine', s:cdFront, s:cdLeftMid, 'none', {})
 call <sid>hi('StatusLineNC', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('TabLine', s:cdFront, s:cdTabOther, 'none', {})
 call <sid>hi('TabLineFill', s:cdFront, s:cdTabOutside, 'none', {})
-call <sid>hi('TabLineSel', s:cdFront, s:cdTabCurrent, 'none', {})
+call <sid>hi('TabLineSel', s:cdFront, s:cdNone, 'none', {})
 call <sid>hi('Title', s:cdNone, s:cdNone, 'bold', {})
 call <sid>hi('Visual', s:cdNone, s:cdSelection, 'none', {})
 call <sid>hi('VisualNOS', s:cdNone, s:cdSelection, 'none', {})
