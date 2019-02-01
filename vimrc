@@ -20,7 +20,7 @@ set backspace=indent,eol,start
 
 " Set block cursor in normal mode and line in edit mode
 let &t_SI="\033[6 q" " start insert mode
-let &t_EI="\033[0 q" " end insert mode
+let &t_EI="\033[2 q" " end insert mode
 
 " QuickFix window key bindings
 autocmd BufWinEnter quickfix map o <CR><C-W>w
@@ -39,11 +39,11 @@ function FindCurrentWord()
     call s:FindInFiles(wordUnderCursor)
 endfunction
 " bind K to grep word under cursor
-nnoremap <silent> K :call FindCurrentWord()<CR>
+nnoremap <silent> ;F :call FindCurrentWord()<CR>
 
 nnoremap <silent> ;a @
-nnoremap <silent> ;d :Files<Enter>
 nnoremap <silent> <C-n> :History<Enter>
+nnoremap * *N
 
 " Set ; then 'x' to quit and save changes
 nnoremap <silent> ;x :x<Enter>
@@ -91,7 +91,7 @@ vnoremap <C-s> <Esc><C-s>gv
 " Turn off the banner
 let g:netrw_banner = 0
 " Open files in new split
-let g:netrw_browse_split = 2
+let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
@@ -108,11 +108,13 @@ set noruler
 set incsearch
 set hlsearch
 set wrapscan
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
 " VimDiff Settings
 set diffopt+=iwhite
+set diffopt+=vertical
 set diffexpr=""
 
 " Color Codes: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
