@@ -61,31 +61,31 @@ let s:cdNone = {'gui': 'NONE', 'cterm': 'NONE', 'cterm256': 'NONE'}
 let s:cdFront = {'gui': '#D4D4D4', 'cterm': s:cterm05, 'cterm256': '188'}
 
 let s:cdTabCurrent = {'gui': '#1E1E1E', 'cterm': s:cterm00, 'cterm256': '235'}
-let s:cdTabOther = {'gui': '#2D2D2D', 'cterm': s:cterm01, 'cterm256': '236'}
-let s:cdTabOutside = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '236'}
+let s:cdTabOther = {'gui': '#2D2D2D', 'cterm': s:cterm01, 'cterm256': '237'}
+let s:cdTabOutside = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '237'}
 
-let s:cdLeftDark = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '236'}
+let s:cdLeftDark = {'gui': '#252526', 'cterm': s:cterm01, 'cterm256': '237'}
 let s:cdLeftMid = {'gui': '#373737', 'cterm': s:cterm03, 'cterm256': '237'}
 let s:cdLeftLight = {'gui': '#3F3F46', 'cterm': s:cterm03, 'cterm256': '238'}
 
 let s:cdPopupFront = {'gui': '#BBBBBB', 'cterm': s:cterm06, 'cterm256': '250'}
-let s:cdPopupBack = {'gui': '#2D2D30', 'cterm': s:cterm01, 'cterm256': '236'}
+let s:cdPopupBack = {'gui': '#2D2D30', 'cterm': s:cterm01, 'cterm256': '237'}
 let s:cdPopupHighlightBlue = {'gui': '#073655', 'cterm': s:cterm0D, 'cterm256': '24'}
 let s:cdPopupHighlightGray = {'gui': '#3D3D40', 'cterm': s:cterm03, 'cterm256': '237'}
 
-let s:cdSplitLight = {'gui': '#898989', 'cterm': s:cterm04, 'cterm256': '245'}
-let s:cdSplitDark = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '236'}
+let s:cdSplitDark = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '237'}
 let s:cdSplitThumb = {'gui': '#424242', 'cterm': s:cterm04, 'cterm256': '238'}
 
 let s:cdCursorDarkDark = {'gui': '#222222', 'cterm': s:cterm01, 'cterm256': '235'}
 let s:cdCursorDark = {'gui': '#51504F', 'cterm': s:cterm03, 'cterm256': '239'}
 let s:cdCursorLight = {'gui': '#AEAFAD', 'cterm': s:cterm04, 'cterm256': '145'}
 let s:cdSelection = {'gui': '#264F78', 'cterm': s:cterm03, 'cterm256': '24'}
-let s:cdLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '237'}
-let s:cdCurrentLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '238'}
+let s:cdLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '238'}
+let s:cdCurrentLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '240'}
+let s:cdDirectory = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '241'}
 
-let s:cdDiffChangeGray = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '235'}
-let s:cdTextDiff = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '52'}
+let s:cdDiffChangeGray = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '236'}
+let s:cdTextDiff = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '88'}
 
 let s:cdSearchCurrent = {'gui': '#49545F', 'cterm': s:cterm09, 'cterm256': '239'}
 let s:cdSearch = {'gui': '#4C4E50', 'cterm': s:cterm0A, 'cterm256': '239'}
@@ -101,8 +101,8 @@ let s:cdGreen = {'gui': '#608B4E', 'cterm': s:cterm0B, 'cterm256': '65'}
 let s:cdDarkGreen = {'gui': '#608B4E', 'cterm': s:cterm0B, 'cterm256': '23'}
 let s:cdBlueGreen = {'gui': '#4EC9B0', 'cterm': s:cterm0F, 'cterm256': '43'}
 let s:cdLightGreen = {'gui': '#B5CEA8', 'cterm': s:cterm09, 'cterm256': '151'}
-let s:cdRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '88'}
-let s:cdDarkRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '52'}
+let s:cdRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '160'}
+let s:cdDarkRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '88'}
 let s:cdOrange = {'gui': '#CE9178', 'cterm': s:cterm0F, 'cterm256': '173'}
 let s:cdLightRed = {'gui': '#D16969', 'cterm': s:cterm08, 'cterm256': '167'}
 let s:cdYellowOrange = {'gui': '#D7BA7D', 'cterm': s:cterm0A, 'cterm256': '179'}
@@ -115,21 +115,23 @@ let s:cdPink = {'gui': '#C586C0', 'cterm': s:cterm0E, 'cterm256': '176'}
 call <sid>hi('Normal', s:cdFront, s:cdNone, 'none', {})
 call <sid>hi('ColorColumn', {}, s:cdCursorDarkDark, 'none', {})
 call <sid>hi('Cursor', s:cdCursorDark, s:cdCursorLight, 'none', {})
-call <sid>hi('CursorLine', {}, s:cdCursorDarkDark, 'none', {})
-call <sid>hi('Directory', s:cdBlue, s:cdNone, 'none', {})
+call <sid>hi('CursorLine', {}, s:cdNone, 'none', {})
+call <sid>hi('Directory', s:cdDirectory, s:cdNone, 'none', {})
+call <sid>hi('treeDir', s:cdDirectory, s:cdNone, 'none', {})
+call <sid>hi('NERDTreeCWD', s:cdDirectory, s:cdNone, 'none', {})
 call <sid>hi('DiffAdd', s:cdNone, s:cdDiffChangeGray, 'none', s:cdNone)
 call <sid>hi('DiffChange', s:cdNone, s:cdDiffChangeGray, 'none', s:cdNone)
 call <sid>hi('DiffDelete', s:cdDiffChangeGray, s:cdNone, 'none', s:cdNone)
 call <sid>hi('DiffText', s:cdNone, s:cdTextDiff, 'none', s:cdNone)
 call <sid>hi('EndOfBuffer', s:cdLineNumber, s:cdNone, 'none', {})
-call <sid>hi('ErrorMsg', s:cdDarkRed, s:cdNone, 'none', {})
+call <sid>hi('ErrorMsg', s:cdRed, s:cdNone, 'none', {})
 call <sid>hi('VertSplit', s:cdSplitDark, s:cdSplitDark, 'none', {})
 call <sid>hi('Folded', s:cdLeftLight, s:cdNone, 'underline', {})
 call <sid>hi('FoldColumn', s:cdLineNumber, s:cdNone, 'none', {})
 call <sid>hi('SignColumn', {}, s:cdNone, 'none', {})
 call <sid>hi('IncSearch', s:cdNone, s:cdSearchCurrent, 'none', {})
 call <sid>hi('LineNr', s:cdLineNumber, s:cdNone, 'none', {})
-call <sid>hi('CursorLineNr', s:cdCurrentLineNumber, s:cdNone, 'none', {})
+call <sid>hi('CursorLineNr', s:cdNone, s:cdNone, 'none', {})
 call <sid>hi('MatchParen', s:cdNone, s:cdCursorDark, 'none', {})
 call <sid>hi('ModeMsg', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('MoreMsg', s:cdFront, s:cdLeftDark, 'none', {})
@@ -183,7 +185,6 @@ call <sid>hi('PreCondit', s:cdPink, {}, 'none', {})
 call <sid>hi('Type', s:cdBlue, {}, 'none', {})
 call <sid>hi('StorageClass', s:cdBlue, {}, 'none', {})
 call <sid>hi('Structure', s:cdBlue, {}, 'none', {})
-call <sid>hi('Keyword', s:cdBlue, {}, 'none', {})
 call <sid>hi('Class', s:cdBlueGreen, {}, 'none', {})
 
 call <sid>hi('Special', s:cdFront, {}, 'none', {})

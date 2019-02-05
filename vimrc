@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 " Enable mouse support
@@ -57,6 +56,7 @@ nnoremap <silent> Q :qa!<Enter>
 " Set ; then 'n' to search the current word under cursor
 nnoremap ;n :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:%s///gn<CR><C-O>
 nnoremap <silent> ;/ :noh<Enter>
+set cursorline
 
 " Allow double tapping ; to toggle selected line comments
 nnoremap <silent> ;; :call NERDComment('n', 'Invert')<Enter>
@@ -80,6 +80,9 @@ vnoremap <C-h> <gv
 nnoremap <silent> <C-p> :FZF<Enter>
 inoremap <silent> <C-p> <Esc> :FZF<Enter>
 vnoremap <silent> <C-p> :FZF<Enter>
+nnoremap <silent> <C-g> :GFiles?<Enter>
+nnoremap <silent> <C-t> :Tags<Enter>
+nnoremap <silent> <C-f> :Ag<Enter>
 
 set clipboard=unnamed
 
@@ -101,19 +104,19 @@ let g:netrw_winsize = 25
 colorscheme vsdark
 syntax on
 set number
-set numberwidth=5
+set numberwidth=6
 set noshowcmd
 " set noshowmode
 set noruler
 set incsearch
 set hlsearch
 set wrapscan
+set nowrap
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
 " VimDiff Settings
-set diffopt+=iwhite
 set diffopt+=vertical
 set diffexpr=""
 
@@ -138,9 +141,6 @@ set statusline+=\        " Space
 let g:NERDSpaceDelims = 1
 
 let $FZF_DEFAULT_COMMAND = 'ag -Q --hidden -p ~/.zsh/.agignore -g ""'
-
-let g:cpp_class_decl_highlight = 1
-let g:cpp_class_scope_highlight = 1
 
 " Additional file extensions
 autocmd BufNewFile,BufRead *.es6 set syntax=javascript
