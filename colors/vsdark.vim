@@ -85,7 +85,7 @@ let s:cdCurrentLineNumber = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '
 let s:cdDirectory = {'gui': '#333333', 'cterm': s:cterm04, 'cterm256': '241'}
 
 let s:cdDiffChangeGray = {'gui': '#666666', 'cterm': s:cterm04, 'cterm256': '236'}
-let s:cdTextDiff = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '88'}
+let s:cdTextDiff = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '52'}
 
 let s:cdSearchCurrent = {'gui': '#49545F', 'cterm': s:cterm09, 'cterm256': '239'}
 let s:cdSearch = {'gui': '#4C4E50', 'cterm': s:cterm0A, 'cterm256': '239'}
