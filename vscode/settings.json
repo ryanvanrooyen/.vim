@@ -1,0 +1,38 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.startupEditor": "none",
+    "editor.cursorBlinking": "solid",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.fontSize": 13,
+    "editor.lineHeight": 1.4,
+    "extensions.ignoreRecommendations": true,
+    "explorer.decorations.colors": false,
+    "git.decorations.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "vim.useSystemClipboard": true,
+    "vim.leader": ";",
+	"vim.visualModeKeyBindingsNonRecursive": [
+		{
+			"before": ["<leader>", "<leader>"],
+			"commands": [
+				"editor.action.commentLine"
+			]
+		},
+	],
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": ["<leader>", "<leader>"],
+			"commands": [
+				"editor.action.commentLine"
+			]
+		},
+		{
+			"before": ["<leader>", "q"],
+			"commands": [
+				"workbench.action.closeActiveEditor"
+			]
+		},
+	]
+}

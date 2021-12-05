@@ -1,0 +1,20 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    // Disabling to try and prevent issues with the OS cmd+h hiding windows
+    { "key": "cmd+h", "command": "-testing.toggleTestingPeekHistory", "when": "false && testing.isPeekVisible" },
+
+    { "key": "ctrl+s",    "command": "workbench.action.files.save" },
+    { "key": "ctrl+p",    "command": "workbench.action.quickOpen" },
+
+    { "key": "ctrl+n",    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup" },
+    { "key": "ctrl+n",    "command": "workbench.action.quickOpenNavigateNextInEditorPicker",    "when": "inEditorsPicker && inQuickOpen" },
+    { "key": "ctrl+c",    "command": "workbench.action.closeQuickOpen",                         "when": "inQuickOpen" },
+
+    { "key": "ctrl+j",    "command": "editor.action.moveLinesDownAction",     "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+k",    "command": "editor.action.moveLinesUpAction",       "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+l",    "command": "editor.action.indentLines",             "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+h",    "command": "editor.action.outdentLines",            "when": "editorTextFocus && !editorReadonly" },
+
+    { "key": "cmd+'",     "command": "workbench.action.debug.stepOver",       "when": "debugState == 'stopped'" },
+    { "key": "cmd+;",     "command": "workbench.action.debug.stepInto",       "when": "debugState != 'inactive'" },
+]
