@@ -59,8 +59,8 @@ nnoremap <silent> ;/ :noh<Enter>
 set cursorline
 
 " Allow double tapping ; to toggle selected line comments
-nnoremap <silent> ;; :call NERDComment('n', 'Invert')<Enter>
-vnoremap <silent> ;; :call NERDComment('x', 'Invert')<Enter>
+nnoremap <silent> ;; :call nerdcommenter#Comment('n', 'Invert')<Enter>
+vnoremap <silent> ;; :call nerdcommenter#Comment('x', 'Invert')<Enter>
 
 " Remap Ctrl + j/k keys to move lines up/down
 nnoremap <C-j> <Esc>:m+<Enter>==
@@ -93,10 +93,13 @@ vnoremap <C-s> <Esc><C-s>gv
 " Set better directory viewer defaults:
 " Turn off the banner
 let g:netrw_banner = 0
-" Open files in new split
+" Open files in new split preview
 let g:netrw_browse_split = 4
+let g:netrw_preview = 1
 let g:netrw_liststyle = 4
 let g:netrw_altv = 1
+" Default vertical tabs to open and takeup 78%
+let g:netrw_winsize = 78
 
 "let g:netrw_banner=0
 " colorscheme vsdark
