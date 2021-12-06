@@ -17,4 +17,6 @@
 
     { "key": "cmd+'",     "command": "workbench.action.debug.stepOver",       "when": "debugState == 'stopped'" },
     { "key": "cmd+;",     "command": "workbench.action.debug.stepInto",       "when": "debugState != 'inactive'" },
+
+    { "key": "ctrl+f",    "command": "actions.find", "when": "editorFocus || editorIsOpen" }
 ]
